@@ -1,8 +1,9 @@
 # Test-Chat example
 
 ## Stack
+``` bash
 $ Nuxt.js, Vuetify.js, Express.js, Socket.IO
-
+```
 ### Build Setup
 
 ``` bash
