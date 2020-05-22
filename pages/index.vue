@@ -2,6 +2,10 @@
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8>
       <v-card min-width="400">
+        <v-snackbar v-model="snackbar" :timeout="6000" top>
+          {{ message }}
+          <v-btn color="pink" flat @click="snackbar = false">Close</v-btn>
+        </v-snackbar>
         <v-card-title>
           <h1>Nuxt chat</h1>
         </v-card-title>
@@ -32,6 +36,8 @@ export default {
     }
   },
   data: () => ({
+    message: "",
+    snackbar: false,
     valid: true,
     name: "",
     nameRules: [
@@ -41,7 +47,15 @@ export default {
     room: "",
     roomRules: [v => !!v || "Enter the room"]
   }),
-
+  mounted() {
+    const { message } = this.$route.query;
+    if (message === "noUser") {
+      this.message = "Enter data";
+    } else if (message === "leftChat") {
+      this.message = "You left from chat";
+    }
+    this.snackbar = !!this.message;
+  },
   methods: {
     ...mapMutations(["setUser"]),
     submit() {
@@ -54,7 +68,7 @@ export default {
           if (typeof data === "string") {
             console.error(data);
           } else {
-            user.id = data.userId
+            user.id = data.userId;
             this.setUser(user);
             this.$router.push("/chat");
           }
