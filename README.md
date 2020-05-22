@@ -1,9 +1,9 @@
-# chat-nuxt
+# Test-Chat example
 
-> Test-Chat
-> Stack: Nuxt.js, Vuetify.js, Express.js, Socket.IO
+## Stack
+$ Nuxt.js, Vuetify.js, Express.js, Socket.IO
 
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
